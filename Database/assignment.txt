@@ -1,0 +1,51 @@
+1)
+SELECT COUNT(*)
+FROM employeeinfo
+WHERE department = 'Admin';
+
+2)
+SELECT LEFT(emplname,4)
+FROM employeeinfo;
+
+3)
+SELECT employeeinfo.empfname,employeeinfo.emplname,employeeposition.salary
+FROM employeeinfo
+INNER JOIN employeeposition
+ON employeeinfo.empid = employeeposition.empid
+WHERE employeeposition.salary BETWEEN 50000 AND 100000;
+
+4)
+SELECT empfname,emplname
+FROM employeeinfo
+WHERE empfname LIKE 'S%';
+
+5)
+SELECT employeeinfo.*,employeeposition.salary
+FROM employeeinfo
+INNER JOIN employeeposition
+ON employeeinfo.empid = employeeposition.empid
+ORDER BY employeeposition.salary
+LIMIT 5;
+
+6)
+SELECT *
+FROM employeeinfo
+WHERE empfname NOT IN('Sanjay','Sonia');
+
+7)
+SELECT department, COUNT(department) AS Department_Count
+FROM employeeinfo
+GROUP BY Department
+ORDER BY Department_Count;
+
+8)
+SELECT empfname, COUNT(empfname) AS emp_count
+FROM employeeinfo
+GROUP BY empfname
+HAVING COUNT(empfname) > 1;
+
+9)
+SELECT department, COUNT(department) AS Department_Count
+FROM employeeinfo
+GROUP BY Department
+HAVING COUNT(department) < 2;
