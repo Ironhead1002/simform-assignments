@@ -2,8 +2,8 @@
 
 def findanagram(lst):
     #removing bracket from starting and ending
-    lst[0] = lst[0][1:]
-    lst[len(lst)-1] = lst[len(lst)-1][:-1]
+    lst[0] = lst[0][2:]
+    lst[len(lst)-1] = lst[len(lst)-1][:-2]
 
     #sorting and saving every string in list
     sorted_lst = [''.join(sorted(x)) for x in lst]
@@ -21,9 +21,10 @@ def findanagram(lst):
         if lst2 not in lst1:
             lst1.append(lst2)
 
-    print(lst1)
+    translation = {39: 34}
+    print(str(lst1).translate(translation))
 
 
 if __name__ == '__main__':
-    user_string = input("enter comma seperated values : ").split(',')
+    user_string = input("enter comma seperated values : ").split('","')
     findanagram(user_string)
